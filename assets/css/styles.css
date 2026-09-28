@@ -1,0 +1,184 @@
+/* =====================================================
+   RR & 3A's Cafe — Shared Stylesheet
+   Extracted from the inline <style> blocks of
+   index.html and menu.html.
+   ===================================================== */
+
+/* ── CSS custom properties (Tailwind theme palette) ── */
+:root {
+  --burgundy:       #5D3140;
+  --magenta:        #CF4173;
+  --softpink:       #F39399;
+  --beige:          #F6D8BD;
+  --burgundy-dark:  #4a2533;
+  --magenta-dark:   #b33360;
+  --beige-dark:     #edcaaa;
+}
+
+/* Paper / grain texture on the page */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.045'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Organic divider wave */
+.wave-divider svg { display: block; }
+
+/* Card slight tilts */
+.card-tilt-left  { transform: rotate(-1.5deg); }
+.card-tilt-right { transform: rotate(1.2deg);  }
+.card-tilt-none  { transform: rotate(-0.4deg); }
+
+.card-tilt-left:hover,
+.card-tilt-right:hover,
+.card-tilt-none:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+/* Staggered fade-in for hero elements */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+.fade-up-1 { animation: fadeUp 0.7s ease both 0.1s; }
+.fade-up-2 { animation: fadeUp 0.7s ease both 0.3s; }
+.fade-up-3 { animation: fadeUp 0.7s ease both 0.5s; }
+.fade-up-4 { animation: fadeUp 0.7s ease both 0.7s; }
+
+/* Decorative underline on section headings */
+.section-heading::after {
+  content: '';
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  background: #CF4173;
+  border-radius: 9999px;
+  margin-top: 0.5rem;
+}
+
+/* Pinboard ribbon label on cards */
+.ribbon {
+  position: absolute;
+  top: -0.75rem;
+  left: 1.25rem;
+  background: #CF4173;
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+/* Soft inner shadow on photo placeholders */
+.photo-placeholder {
+  background: linear-gradient(135deg, #edcaaa 0%, #f6d8bd 60%, #f39399 100%);
+  box-shadow: inset 0 4px 24px rgba(93,49,64,0.13);
+}
+
+/* Nav link underline grow */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 2px;
+  background: #CF4173;
+  border-radius: 9999px;
+  transition: width 0.25s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* Active page nav link — always underlined (menu.html) */
+.nav-link-active::after { width: 100%; }
+
+/* Mobile menu transition */
+#mobile-menu {
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+#mobile-menu.open {
+  max-height: 26rem;
+  opacity: 1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F6D8BD; }
+::-webkit-scrollbar-thumb { background: #CF4173; border-radius: 9999px; }
+
+/* =====================================================
+   MENU PAGE ONLY
+   ===================================================== */
+
+/* Menu item row — dotted leader between name and price */
+.menu-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.menu-row-name {
+  flex-shrink: 1;
+  min-width: 0;
+}
+.menu-row-dots {
+  flex: 1;
+  border-bottom: 2px dotted #F39399;
+  margin-bottom: 4px;
+  opacity: 0.6;
+  min-width: 1rem;
+}
+.menu-row-price {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: #5D3140;
+}
+
+/* Badge pill */
+.badge {
+  display: inline-block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  vertical-align: middle;
+  margin-left: 0.35rem;
+  line-height: 1.4;
+}
+.badge-popular  { background: #CF4173; color: #fff; }
+.badge-veggie   { background: #6B9E5A; color: #fff; }
+.badge-day      { background: #5D3140; color: #F6D8BD; }
+.badge-new      { background: #F39399; color: #5D3140; }
+
+/* Category section divider */
+.cat-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.cat-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, #F39399 0%, transparent 100%);
+  opacity: 0.5;
+}

@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="RR & 3A's Cafe Menu — Breakfast & Brunch, Sushi, Noodles, Mains, Sides, and Drinks. Sample menu; call 306-921-3359 to confirm availability." />
+  <meta name="description" content="RR & 3A's Cafe Menu — Breakfast & Brunch, Sushi, Noodles, Mains, Sides, and Drinks. Call 306-921-3359 for availability." />
   <title>Menu | RR &amp; 3A's Cafe</title>
+
+  <!-- =============================================
+       FAVICON / ICON
+       ============================================= -->
+  <link rel="icon" type="image/png" href="assets/img/rr3a-icon.png" />
+  <link rel="apple-touch-icon" href="assets/img/rr3a-icon.png" />
 
   <!-- =============================================
        GOOGLE FONTS — Petrona (headings) + Manrope (body)
@@ -24,199 +30,12 @@
   <!-- =============================================
        TAILWIND CONFIG — custom palette + fonts
        ============================================= -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            burgundy:  '#5D3140',
-            magenta:   '#CF4173',
-            softpink:  '#F39399',
-            beige:     '#F6D8BD',
-            'burgundy-dark':  '#4a2533',
-            'magenta-dark':   '#b33360',
-            'beige-dark':     '#edcaaa',
-          },
-          fontFamily: {
-            heading: ['"Petrona"', 'Georgia', 'serif'],
-            body:    ['"Manrope"', 'system-ui', 'sans-serif'],
-          },
-          borderRadius: {
-            'organic': '2rem 0.5rem 2rem 0.5rem',
-            'organic-alt': '0.5rem 2rem 0.5rem 2rem',
-          },
-        },
-      },
-    };
-  </script>
+  <script src="assets/js/tailwind-config.js"></script>
 
   <!-- =============================================
-       GLOBAL BASE STYLES — identical to index.html
+       GLOBAL BASE STYLES — external stylesheet
        ============================================= -->
-  <style>
-    /* Paper / grain texture on the page */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.045'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-    /* Smooth scroll */
-    html { scroll-behavior: smooth; }
-
-    /* Organic divider wave */
-    .wave-divider svg { display: block; }
-
-    /* Card slight tilts */
-    .card-tilt-left  { transform: rotate(-1.5deg); }
-    .card-tilt-right { transform: rotate(1.2deg);  }
-    .card-tilt-none  { transform: rotate(-0.4deg); }
-
-    .card-tilt-left:hover,
-    .card-tilt-right:hover,
-    .card-tilt-none:hover {
-      transform: rotate(0deg) translateY(-4px);
-    }
-
-    /* Staggered fade-in for hero elements */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0);    }
-    }
-    .fade-up-1 { animation: fadeUp 0.7s ease both 0.1s; }
-    .fade-up-2 { animation: fadeUp 0.7s ease both 0.3s; }
-    .fade-up-3 { animation: fadeUp 0.7s ease both 0.5s; }
-    .fade-up-4 { animation: fadeUp 0.7s ease both 0.7s; }
-
-    /* Decorative underline on section headings */
-    .section-heading::after {
-      content: '';
-      display: block;
-      width: 3.5rem;
-      height: 3px;
-      background: #CF4173;
-      border-radius: 9999px;
-      margin-top: 0.5rem;
-    }
-
-    /* Pinboard ribbon label on cards */
-    .ribbon {
-      position: absolute;
-      top: -0.75rem;
-      left: 1.25rem;
-      background: #CF4173;
-      color: #fff;
-      font-family: 'Manrope', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.75rem;
-      border-radius: 9999px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-    }
-
-    /* Soft inner shadow on photo placeholders */
-    .photo-placeholder {
-      background: linear-gradient(135deg, #edcaaa 0%, #f6d8bd 60%, #f39399 100%);
-      box-shadow: inset 0 4px 24px rgba(93,49,64,0.13);
-    }
-
-    /* Nav link underline grow */
-    .nav-link {
-      position: relative;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0;
-      width: 0; height: 2px;
-      background: #CF4173;
-      border-radius: 9999px;
-      transition: width 0.25s ease;
-    }
-    .nav-link:hover::after { width: 100%; }
-    /* Active page nav link — always underlined */
-    .nav-link-active::after { width: 100%; }
-
-    /* Mobile menu transition */
-    #mobile-menu {
-      transition: max-height 0.35s ease, opacity 0.3s ease;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-    }
-    #mobile-menu.open {
-      max-height: 26rem;
-      opacity: 1;
-    }
-
-    /* Scrollbar styling */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #F6D8BD; }
-    ::-webkit-scrollbar-thumb { background: #CF4173; border-radius: 9999px; }
-
-    /* Menu item row — dotted leader between name and price */
-    .menu-row {
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-    }
-    .menu-row-name {
-      flex-shrink: 1;
-      min-width: 0;
-    }
-    .menu-row-dots {
-      flex: 1;
-      border-bottom: 2px dotted #F39399;
-      margin-bottom: 4px;
-      opacity: 0.6;
-      min-width: 1rem;
-    }
-    .menu-row-price {
-      flex-shrink: 0;
-      font-weight: 700;
-      color: #5D3140;
-    }
-
-    /* Badge pill */
-    .badge {
-      display: inline-block;
-      font-family: 'Manrope', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      padding: 0.15rem 0.55rem;
-      border-radius: 9999px;
-      vertical-align: middle;
-      margin-left: 0.35rem;
-      line-height: 1.4;
-    }
-    .badge-popular  { background: #CF4173; color: #fff; }
-    .badge-veggie   { background: #6B9E5A; color: #fff; }
-    .badge-day      { background: #5D3140; color: #F6D8BD; }
-    .badge-new      { background: #F39399; color: #5D3140; }
-
-    /* Category section divider */
-    .cat-divider {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .cat-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, #F39399 0%, transparent 100%);
-      opacity: 0.5;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body class="bg-beige font-body text-burgundy antialiased">
@@ -237,14 +56,13 @@
 
       <!-- Logo / Wordmark -->
       <a href="index.html#home" class="flex items-center gap-3 group" aria-label="RR & 3A's Cafe — go to homepage">
-        <span
-          class="inline-flex items-center justify-center w-11 h-11 rounded-full border-2 border-softpink text-softpink font-heading font-bold text-lg leading-none select-none group-hover:bg-softpink group-hover:text-burgundy transition-colors duration-300"
-          aria-hidden="true"
-        >RR</span>
-        <span class="font-heading text-beige leading-tight">
-          <span class="block text-lg font-semibold tracking-wide">RR &amp; 3A's</span>
-          <span class="block text-xs font-body font-medium text-softpink tracking-widest uppercase">Cafe &amp; Kitchen</span>
-        </span>
+        <img
+          src="assets/img/rr3a-logo.png"
+          alt="RR &amp; 3A's Cafe logo"
+          class="h-14 w-auto"
+          width="140"
+          height="56"
+        />
       </a>
 
       <!-- Desktop Navigation -->
@@ -291,7 +109,7 @@
          Warm beige — NOT the dark gradient cliché.
          Asymmetric: text left, decorative photo right.
          ============================================= -->
-    <section class="relative overflow-hidden bg-beige pt-14 pb-0" aria-label="Our Menu">
+    <section class="relative overflow-hidden bg-cream pt-14 pb-0" aria-label="Our Menu">
 
       <!-- Background blobs -->
       <div class="absolute -top-16 -left-16 w-72 h-72 rounded-full bg-softpink/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
@@ -307,22 +125,11 @@
           <h1 class="fade-up-2 font-heading text-5xl sm:text-6xl font-bold text-burgundy leading-tight mb-5">
             Our Menu
           </h1>
-          <p class="fade-up-3 font-body text-lg text-burgundy/75 leading-relaxed max-w-lg mb-5">
+          <p class="fade-up-3 font-body text-lg text-burgundy/90 leading-relaxed max-w-lg mb-5">
             Home-cooked comfort, fresh sushi, weekend brunch — 
             something good on the table every day we're open. 
             Made with care, served with warmth.
           </p>
-          <!-- Disclaimer -->
-          <div class="fade-up-4 inline-flex items-start gap-3 bg-softpink/20 border border-softpink/40 rounded-2xl px-5 py-4 max-w-lg mb-8">
-            <svg class="w-5 h-5 text-magenta flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/>
-            </svg>
-            <p class="font-body text-sm text-burgundy/80 leading-relaxed">
-              <strong class="font-semibold">Sample menu — items and prices may vary.</strong><br />
-              Call us to confirm availability: <a href="tel:3069213359" class="text-magenta font-semibold hover:underline">306-921-3359</a>
-            </p>
-          </div>
-
           <!-- ── Download PDF button ── -->
           <div>
             <a
@@ -359,7 +166,7 @@
             <!-- Full-height feature image -->
             <div class="photo-placeholder w-full h-[26rem] lg:h-[30rem] rounded-[0.75rem_2.5rem_0.75rem_2.5rem] overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80&auto=format&fit=crop"
+                src="assets/img/food-closeup.jpg"
                 alt="Fresh food from RR & 3A's Cafe kitchen"
                 class="w-full h-full object-cover opacity-85"
                 width="480"
@@ -402,7 +209,7 @@
           <!-- Hero image -->
           <div class="relative mb-8 overflow-hidden rounded-[2rem_0.5rem_2rem_0.5rem] shadow-xl h-48 sm:h-64">
             <img
-              src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=800&q=80&auto=format&fit=crop"
+              src="assets/img/sunday-buffet.jpeg"
               alt="Generous brunch spread — eggs, pastries, fruit and more"
               class="w-full h-full object-cover"
               width="800"
@@ -1231,7 +1038,7 @@
           <!-- Hero image -->
           <div class="relative mb-8 overflow-hidden rounded-[2rem_0.5rem_2rem_0.5rem] shadow-xl h-48 sm:h-60">
             <img
-              src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=800&q=80&auto=format&fit=crop"
+              src="assets/img/noodle-bowl.jpg"
               alt="Steaming noodle bowl with dumplings"
               class="w-full h-full object-cover"
               width="800"
@@ -1420,7 +1227,7 @@
             <span class="ribbon" aria-hidden="true">Every Sunday</span>
             <div class="w-full h-28 rounded-lg overflow-hidden mb-4 shadow-md">
               <img
-                src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=600&q=75&auto=format&fit=crop"
+                src="assets/img/sunday-buffet.jpeg"
                 alt="Sunday Brunch Buffet"
                 class="w-full h-full object-cover opacity-80"
                 width="300" height="150"
@@ -1436,7 +1243,7 @@
             <span class="ribbon" aria-hidden="true">Every Wednesday</span>
             <div class="w-full h-28 rounded-lg overflow-hidden mb-4 shadow-md">
               <img
-                src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=75&auto=format&fit=crop"
+                src="assets/img/sushi-rolls.jpg"
                 alt="Sushi Wednesday"
                 class="w-full h-full object-cover opacity-80"
                 width="300" height="150"
@@ -1452,7 +1259,7 @@
             <span class="ribbon" aria-hidden="true">Every Friday</span>
             <div class="w-full h-28 rounded-lg overflow-hidden mb-4 shadow-md">
               <img
-                src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=75&auto=format&fit=crop"
+                src="assets/img/noodle-bowl.jpg"
                 alt="Friday Noodle Specials"
                 class="w-full h-full object-cover opacity-80"
                 width="300" height="150"
@@ -1507,11 +1314,13 @@
       <!-- Brand column -->
       <div class="md:col-span-1">
         <div class="flex items-center gap-3 mb-5">
-          <span class="inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-softpink text-softpink font-heading font-bold text-xl leading-none" aria-hidden="true">RR</span>
-          <span class="font-heading text-beige leading-tight">
-            <span class="block text-lg font-semibold">RR &amp; 3A's</span>
-            <span class="block text-xs font-body text-softpink tracking-widest uppercase">Cafe &amp; Kitchen</span>
-          </span>
+          <img
+            src="assets/img/rr3a-logo.png"
+            alt="RR &amp; 3A's Cafe logo"
+            class="h-14 w-auto"
+            width="140"
+            height="56"
+          />
         </div>
         <p class="font-body text-sm text-beige/70 leading-relaxed max-w-xs">
           Your neighbourhood cafe at the Melfort Golf &amp; Country Club. 
@@ -1603,47 +1412,8 @@
   <!-- / CONTACT & FOOTER -->
 
 
-  <!-- =============================================
-       MINIMAL INLINE JAVASCRIPT
-       Mobile menu toggle + dynamic year
-       ============================================= -->
-  <script>
-    // ── Mobile nav toggle ──────────────────────────
-    const btn   = document.getElementById('hamburger-btn');
-    const menu  = document.getElementById('mobile-menu');
-    const bars  = btn.querySelectorAll('.hamburger-bar');
-
-    function openMobileMenu() {
-      menu.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-      btn.setAttribute('aria-label', 'Close navigation menu');
-      bars[0].style.transform = 'translateY(5.5px) rotate(45deg)';
-      bars[1].style.opacity = '0';
-      bars[2].style.transform = 'translateY(-5.5px) rotate(-45deg)';
-    }
-
-    function closeMobileMenu() {
-      menu.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.setAttribute('aria-label', 'Open navigation menu');
-      bars[0].style.transform = '';
-      bars[1].style.opacity = '';
-      bars[2].style.transform = '';
-    }
-
-    btn.addEventListener('click', () => {
-      menu.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!btn.contains(e.target) && !menu.contains(e.target)) {
-        closeMobileMenu();
-      }
-    });
-
-    // ── Dynamic copyright year ─────────────────────
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <!-- Shared site scripts (mobile nav + dynamic year) -->
+  <script src="assets/js/main.js"></script>
 
 </body>
 </html>
