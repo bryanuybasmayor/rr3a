@@ -6,13 +6,13 @@
 
 /* ── CSS custom properties (Tailwind theme palette) ── */
 :root {
-  --burgundy:       #5D3140;
-  --magenta:        #CF4173;
-  --softpink:       #F39399;
-  --beige:          #F6D8BD;
-  --burgundy-dark:  #4a2533;
-  --magenta-dark:   #b33360;
-  --beige-dark:     #edcaaa;
+  --burgundy:       #47231A;
+  --magenta:        #C23E32;
+  --terracotta:     #D57A4E;
+  --beige:          #FFF1DE;
+  --burgundy-dark:  #341A12;
+  --magenta-dark:   #9C2F26;
+  --beige-dark:     #F6D9B4;
 }
 
 /* Paper / grain texture on the page */
@@ -29,18 +29,11 @@ body::before {
 /* Smooth scroll */
 html { scroll-behavior: smooth; }
 
-/* Organic divider wave */
-.wave-divider svg { display: block; }
-
-/* Card slight tilts */
-.card-tilt-left  { transform: rotate(-1.5deg); }
-.card-tilt-right { transform: rotate(1.2deg);  }
-.card-tilt-none  { transform: rotate(-0.4deg); }
-
+/* Card hover lift */
 .card-tilt-left:hover,
 .card-tilt-right:hover,
 .card-tilt-none:hover {
-  transform: rotate(0deg) translateY(-4px);
+  transform: translateY(-4px);
 }
 
 /* Staggered fade-in for hero elements */
@@ -59,7 +52,7 @@ html { scroll-behavior: smooth; }
   display: block;
   width: 3.5rem;
   height: 3px;
-  background: #CF4173;
+  background: #C23E32;
   border-radius: 9999px;
   margin-top: 0.5rem;
 }
@@ -69,7 +62,7 @@ html { scroll-behavior: smooth; }
   position: absolute;
   top: -0.75rem;
   left: 1.25rem;
-  background: #CF4173;
+  background: #C23E32;
   color: #fff;
   font-family: 'Manrope', sans-serif;
   font-size: 0.7rem;
@@ -83,8 +76,8 @@ html { scroll-behavior: smooth; }
 
 /* Soft inner shadow on photo placeholders */
 .photo-placeholder {
-  background: linear-gradient(135deg, #edcaaa 0%, #f6d8bd 60%, #f39399 100%);
-  box-shadow: inset 0 4px 24px rgba(93,49,64,0.13);
+  background: linear-gradient(135deg, #F6D9B4 0%, #FFF1DE 60%, #D57A4E 100%);
+  box-shadow: inset 0 4px 24px rgba(71,35,26,0.13);
 }
 
 /* Nav link underline grow */
@@ -96,7 +89,7 @@ html { scroll-behavior: smooth; }
   position: absolute;
   bottom: -2px; left: 0;
   width: 0; height: 2px;
-  background: #CF4173;
+  background: #C23E32;
   border-radius: 9999px;
   transition: width 0.25s ease;
 }
@@ -119,8 +112,8 @@ html { scroll-behavior: smooth; }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #F6D8BD; }
-::-webkit-scrollbar-thumb { background: #CF4173; border-radius: 9999px; }
+::-webkit-scrollbar-track { background: #FFF1DE; }
+::-webkit-scrollbar-thumb { background: #C23E32; border-radius: 9999px; }
 
 /* =====================================================
    MENU PAGE ONLY
@@ -138,7 +131,7 @@ html { scroll-behavior: smooth; }
 }
 .menu-row-dots {
   flex: 1;
-  border-bottom: 2px dotted #F39399;
+  border-bottom: 2px dotted #D57A4E;
   margin-bottom: 4px;
   opacity: 0.6;
   min-width: 1rem;
@@ -146,7 +139,7 @@ html { scroll-behavior: smooth; }
 .menu-row-price {
   flex-shrink: 0;
   font-weight: 700;
-  color: #5D3140;
+  color: #47231A;
 }
 
 /* Badge pill */
@@ -163,10 +156,10 @@ html { scroll-behavior: smooth; }
   margin-left: 0.35rem;
   line-height: 1.4;
 }
-.badge-popular  { background: #CF4173; color: #fff; }
+.badge-popular  { background: #C23E32; color: #fff; }
 .badge-veggie   { background: #6B9E5A; color: #fff; }
-.badge-day      { background: #5D3140; color: #F6D8BD; }
-.badge-new      { background: #F39399; color: #5D3140; }
+.badge-day      { background: #47231A; color: #FFF1DE; }
+.badge-new      { background: #D57A4E; color: #47231A; }
 
 /* Category section divider */
 .cat-divider {
@@ -179,6 +172,6 @@ html { scroll-behavior: smooth; }
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, #F39399 0%, transparent 100%);
+  background: linear-gradient(to right, #D57A4E 0%, transparent 100%);
   opacity: 0.5;
 }

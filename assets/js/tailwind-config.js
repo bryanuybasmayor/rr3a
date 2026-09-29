@@ -1,29 +1,25 @@
 /* =====================================================
    RR & 3A's Cafe — Tailwind Play CDN config
-   Custom palette, fonts, and border radii.
+   Custom palette and fonts.
    Loaded after the Tailwind CDN script.
    ===================================================== */
 tailwind.config = {
   theme: {
     extend: {
       colors: {
-        burgundy:  '#5D3140',
-        magenta:   '#CF4173',
-        softpink:  '#F39399',
-        beige:     '#F6D8BD',
-        cream:     '#f3cfb0',
+        burgundy:  '#47231A',
+        magenta:   '#C23E32',
+        terracotta:'#D57A4E',
+        beige:     '#FFF1DE',
+        cream:     '#FBDCC0',
         /* tints / shades derived for hover states */
-        'burgundy-dark':  '#4a2533',
-        'magenta-dark':   '#b33360',
-        'beige-dark':     '#edcaaa',
+        'burgundy-dark':  '#341A12',
+        'magenta-dark':   '#9C2F26',
+        'beige-dark':     '#F6D9B4',
       },
       fontFamily: {
-        heading: ['"Petrona"', 'Georgia', 'serif'],
+        heading: ['"Poppins"', 'system-ui', 'sans-serif'],
         body:    ['"Manrope"', 'system-ui', 'sans-serif'],
-      },
-      borderRadius: {
-        'organic': '2rem 0.5rem 2rem 0.5rem',
-        'organic-alt': '0.5rem 2rem 0.5rem 2rem',
       },
     },
   },
