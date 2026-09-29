@@ -15,6 +15,9 @@
   --beige-dark:     #F6D9B4;
 }
 
+/* Tighter letter-spacing on all Poppins headings */
+.font-heading { letter-spacing: -1px; }
+
 /* Paper / grain texture on the page */
 body::before {
   content: '';
